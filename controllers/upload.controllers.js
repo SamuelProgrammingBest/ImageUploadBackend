@@ -32,7 +32,8 @@ const uploadImage = async (req, res) => {
 
     return res.status(200).send({
       message: `Image Upload successful`,
-      address:imageResult.image
+      address:imageResult.image,
+      fileName:imageResult.imagePublicId
     });
   } catch (error) {
     console.log(error);
