@@ -13,6 +13,4 @@ const imageSchema = mongoose.Schema(
     {timstamps:true}
 )
 
-const imageModel = mongoose.model("imageUpload", imageSchema)
-
-module.exports = imageModel
+module.exports = mongoose.model("imageUpload", imageSchema)
