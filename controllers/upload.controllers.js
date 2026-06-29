@@ -15,7 +15,11 @@ const uploadImage = async (req, res) => {
 
     console.log(file);
 
-    const resultImage = await cloudinary.uploader.upload(file, {
+    const base64 = `data:${
+      file.mimetype
+    };base64,${file.buffer.toString("base64")}`;
+
+    const resultImage = await cloudinary.uploader.upload(base64, {
       folder: "imgUpload",
       use_filename:true,
       overwrite:true
