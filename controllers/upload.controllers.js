@@ -33,8 +33,12 @@ const uploadImage = async (req, res) => {
       overwrite:true
     });
 
+    const downloadable = cloudinary.url(resultImage.public_id, {
+      flags:"attachment"
+    })
+
     const imageResult = await imageModel.create({
-      image: resultImage.secure_url,
+      image: downloadable,
       imagePublicId: resultImage.public_id,
     });
 
