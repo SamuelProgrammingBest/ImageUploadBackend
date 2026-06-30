@@ -45,7 +45,7 @@ const uploadImage = async (req, res) => {
     return res.status(200).send({
       message: `Image Upload successful`,
       address:imageResult.image,
-      fileName:imageResult._id
+      fileName:imageResult.imagePublicId
     });
   } catch (error) {
     console.log(error);
@@ -65,9 +65,9 @@ const downloadImage = async (req, res) => {
       });
     }
 
-    const imageResult = imageModel.findById(filename)
+    const imageResult = await imageModel.findOne({imagePublicId:filename})
 
-    if(imageResult == undefined) {
+    if(imageResult) {
       return res.status(403).send({
         message: `Image not found`,
       });
@@ -75,7 +75,7 @@ const downloadImage = async (req, res) => {
 
     return res.status(200).send({
       message: `Image Download successful`,
-      data:imageResult
+      data:imageResult.image
     });
 
   } catch (error) {

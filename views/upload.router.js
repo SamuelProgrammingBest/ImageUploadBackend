@@ -5,6 +5,6 @@ const { uploadImage, downloadImage } = require("../controllers/upload.controller
 const router = express.Router()
 
 router.post("/upload", upload.single("imgUpload"), uploadImage)
-router.get("/download/:filename", downloadImage)
+router.get("/download/imgUpload/:filename", downloadImage)
 
 module.exports = router
