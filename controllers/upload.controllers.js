@@ -67,7 +67,7 @@ const downloadImage = async (req, res) => {
 
     const imageResult = imageModel.findById(filename)
 
-    if(!imageResult) {
+    if(imageResult == undefined) {
       return res.status(403).send({
         message: `Image not found`,
       });
@@ -75,7 +75,7 @@ const downloadImage = async (req, res) => {
 
     return res.status(200).send({
       message: `Image Download successful`,
-      d:imageResult.image
+      data:imageResult
     });
 
   } catch (error) {
