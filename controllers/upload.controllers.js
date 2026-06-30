@@ -15,6 +15,14 @@ const uploadImage = async (req, res) => {
 
     console.log(file);
 
+    const accept = ["image/jpg", "image/png", "image/gif"]
+
+    if(!accept.includes(file.mimetype)) {
+      return res.status(403).send({
+        message: `Unsupported File Format`,
+      });
+    }
+
     const base64 = `data:${
       file.mimetype
     };base64,${file.buffer.toString("base64")}`;
