@@ -69,7 +69,9 @@ const downloadImage = async (req, res) => {
 
     return res.status(200).send({
       message: `Image Download successful`,
-      data:imageResult
+      data:{
+        image:imageResult
+      }
     });
 
   } catch (error) {
