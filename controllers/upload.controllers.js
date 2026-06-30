@@ -67,8 +67,15 @@ const downloadImage = async (req, res) => {
 
     const imageResult = imageModel.findOne({imagePublicId:filename})
 
+    if(!imageResult) {
+      return res.status(403).send({
+        message: `Image not found`,
+      });
+    }
+
     return res.status(200).send({
       message: `Image Download successful`,
+      d:imageResult.image
     });
 
   } catch (error) {
