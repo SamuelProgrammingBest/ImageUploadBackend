@@ -65,11 +65,11 @@ const downloadImage = async (req, res) => {
       });
     }
 
-    const image = imageModel.findOne({imagePublicId:filename})
+    const imageResult = imageModel.findOne({imagePublicId:filename})
 
     return res.status(200).send({
-      message: `Image Upload successful`,
-      image:image.image
+      message: `Image Download successful`,
+      downloadableURL:imageResult.image
     });
 
   } catch (error) {
