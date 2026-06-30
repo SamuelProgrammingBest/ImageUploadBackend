@@ -65,7 +65,7 @@ const downloadImage = async (req, res) => {
       });
     }
 
-    const imageResult = imageModel.findOne({imagePublicId:filename})
+    const imageResult = imageModel.findOne({imagePublicId:`imgUpload/${filename}`})
 
     if(!imageResult) {
       return res.status(403).send({
