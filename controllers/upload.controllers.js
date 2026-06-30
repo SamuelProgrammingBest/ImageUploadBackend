@@ -45,7 +45,7 @@ const uploadImage = async (req, res) => {
     return res.status(200).send({
       message: `Image Upload successful`,
       address:imageResult.image,
-      fileName:imageResult.imagePublicId
+      fileName:imageResult._id
     });
   } catch (error) {
     console.log(error);
@@ -65,7 +65,7 @@ const downloadImage = async (req, res) => {
       });
     }
 
-    const imageResult = imageModel.findOne({imagePublicId:`imgUpload/${filename}`})
+    const imageResult = imageModel.findById(filename)
 
     if(!imageResult) {
       return res.status(403).send({
